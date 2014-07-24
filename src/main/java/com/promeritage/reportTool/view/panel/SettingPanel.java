@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import com.promeritage.reportTool.key.Key;
-import com.promeritage.reportTool.main.ReportTool;
+import com.promeritage.reportTool.main.ReportToolApp;
 
 public class SettingPanel extends JPanel {
 
@@ -26,7 +26,7 @@ public class SettingPanel extends JPanel {
         add(usernameLabel);
 
         final JTextField usernameText = new JTextField();
-        String username = ReportTool.PREF.get(Key.USER_NAME, "");
+        String username = ReportToolApp.PREF.get(Key.USER_NAME, "");
         usernameText.setText(username);
         usernameText.setBounds(108, 8, 217, 20);
         add(usernameText);
@@ -36,7 +36,7 @@ public class SettingPanel extends JPanel {
         add(officerEmailLabel);
 
         final JTextField officerEmailAddrText = new JTextField();
-        String officerEmailAddr = ReportTool.PREF.get(Key.DAILY_MAIL_ADDR,
+        String officerEmailAddr = ReportToolApp.PREF.get(Key.DAILY_MAIL_ADDR,
                 "ireneliu@cht.com.tw,evanhuang@cht.com.tw,annyhu@cht.com.tw");
         officerEmailAddrText.setText(officerEmailAddr);
         officerEmailAddrText.setBounds(108, 38, 217, 20);
@@ -47,7 +47,7 @@ public class SettingPanel extends JPanel {
         add(hrEmailAddrLabel);
 
         final JTextField hrEmailAddrText = new JTextField();
-        String hrEmailAddr = ReportTool.PREF.get(Key.HR_MAIL_ADDR,
+        String hrEmailAddr = ReportToolApp.PREF.get(Key.HR_MAIL_ADDR,
                 "funny.wu@promeritage.com.tw,queenie.chang@promeritage.com.tw");
         hrEmailAddrText.setText(hrEmailAddr);
         hrEmailAddrText.setBounds(108, 68, 217, 20);
@@ -58,7 +58,7 @@ public class SettingPanel extends JPanel {
         add(joinSystemIdsLabel);
 
         final JTextField joinSystemIdsText = new JTextField();
-        String joinSystemIds = ReportTool.PREF.get(Key.JOIN_SYSTEM_IDS, "CTA,FMS,MCT");
+        String joinSystemIds = ReportToolApp.PREF.get(Key.JOIN_SYSTEM_IDS, "CTA,FMS,MCT");
         joinSystemIdsText.setText(joinSystemIds);
         joinSystemIdsText.setBounds(108, 102, 217, 20);
         add(joinSystemIdsText);
@@ -67,10 +67,10 @@ public class SettingPanel extends JPanel {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ReportTool.PREF.put(Key.USER_NAME, usernameText.getText());
-                ReportTool.PREF.put(Key.DAILY_MAIL_ADDR, officerEmailAddrText.getText());
-                ReportTool.PREF.put(Key.HR_MAIL_ADDR, hrEmailAddrText.getText());
-                ReportTool.PREF.put(Key.JOIN_SYSTEM_IDS, joinSystemIdsText.getText());
+                ReportToolApp.PREF.put(Key.USER_NAME, usernameText.getText());
+                ReportToolApp.PREF.put(Key.DAILY_MAIL_ADDR, officerEmailAddrText.getText());
+                ReportToolApp.PREF.put(Key.HR_MAIL_ADDR, hrEmailAddrText.getText());
+                ReportToolApp.PREF.put(Key.JOIN_SYSTEM_IDS, joinSystemIdsText.getText());
             }
         });
         saveButton.setBounds(236, 136, 89, 23);

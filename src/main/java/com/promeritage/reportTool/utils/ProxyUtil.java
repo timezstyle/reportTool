@@ -3,13 +3,13 @@ package com.promeritage.reportTool.utils;
 import java.util.Properties;
 
 import com.promeritage.reportTool.key.Key;
-import com.promeritage.reportTool.main.ReportTool;
+import com.promeritage.reportTool.main.ReportToolApp;
 
 public class ProxyUtil {
 
     public static void setProxy(boolean selected) {
         Properties properties = System.getProperties();
-        ReportTool.PREF.putBoolean(Key.PROXY_SET, selected);
+        ReportToolApp.PREF.putBoolean(Key.PROXY_SET, selected);
         if (selected) {
             properties.put(Key.PROXY_SET, "true");
             properties.put(Key.PROXY_HOST, "10.160.3.88");

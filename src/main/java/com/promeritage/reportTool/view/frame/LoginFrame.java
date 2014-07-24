@@ -13,7 +13,7 @@ import javax.swing.JTextField;
 
 import com.google.gdata.util.AuthenticationException;
 import com.promeritage.reportTool.key.Key;
-import com.promeritage.reportTool.main.ReportTool;
+import com.promeritage.reportTool.main.ReportToolApp;
 import com.promeritage.reportTool.repository.CalendarRepository;
 import com.promeritage.reportTool.utils.ProxyUtil;
 
@@ -40,7 +40,7 @@ public class LoginFrame extends JFrame {
         panel.add(userLabel);
 
         final JTextField userText = new JTextField();
-        userText.setText(ReportTool.PREF.get(Key.USER_EMAIL, ""));
+        userText.setText(ReportToolApp.PREF.get(Key.USER_EMAIL, ""));
         userText.setBounds(100, 10, 184, 25);
         panel.add(userText);
 
@@ -49,23 +49,23 @@ public class LoginFrame extends JFrame {
         panel.add(passwordLabel);
 
         final JPasswordField passwordText = new JPasswordField();
-        passwordText.setText(ReportTool.PREF.get(Key.PASSWORD, ""));
+        passwordText.setText(ReportToolApp.PREF.get(Key.PASSWORD, ""));
         passwordText.setBounds(100, 40, 184, 25);
         panel.add(passwordText);
 
         final JCheckBox rememberPassword = new JCheckBox("remember password");
-        rememberPassword.setSelected(ReportTool.PREF.getBoolean(Key.REMEMBER_PASSWORD, false));
+        rememberPassword.setSelected(ReportToolApp.PREF.getBoolean(Key.REMEMBER_PASSWORD, false));
         rememberPassword.setBounds(100, 80, 160, 25);
         panel.add(rememberPassword);
         rememberPassword.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ReportTool.PREF.putBoolean(Key.REMEMBER_PASSWORD, rememberPassword.isSelected());
+                ReportToolApp.PREF.putBoolean(Key.REMEMBER_PASSWORD, rememberPassword.isSelected());
             }
         });
 
         final JCheckBox useProxy = new JCheckBox("useProxy");
-        useProxy.setSelected(ReportTool.PREF.getBoolean(Key.PROXY_SET, false));
+        useProxy.setSelected(ReportToolApp.PREF.getBoolean(Key.PROXY_SET, false));
         useProxy.setBounds(100, 120, 160, 25);
         panel.add(useProxy);
         ProxyUtil.setProxy(useProxy.isSelected());
@@ -84,11 +84,11 @@ public class LoginFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String username = userText.getText();
                 String password = new String(passwordText.getPassword());
-                ReportTool.PREF.put(Key.USER_EMAIL, username);
+                ReportToolApp.PREF.put(Key.USER_EMAIL, username);
                 if (rememberPassword.isSelected()) {
-                    ReportTool.PREF.put(Key.PASSWORD, password);
+                    ReportToolApp.PREF.put(Key.PASSWORD, password);
                 } else {
-                    ReportTool.PREF.remove(Key.PASSWORD);
+                    ReportToolApp.PREF.remove(Key.PASSWORD);
                 }
 
                 try {
